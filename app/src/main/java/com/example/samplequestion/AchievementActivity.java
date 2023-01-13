@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,11 @@ public class AchievementActivity extends AppCompatActivity {
 
         MyListAdapter adapter=new MyListAdapter(this, courseName, grades);
         history.setAdapter(adapter);
+
+
+        TextView total = findViewById(R.id.achievementAct_TV_total);
+        total.setText(String.valueOf(courseName.length));
+
 
 
 

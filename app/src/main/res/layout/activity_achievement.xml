@@ -22,10 +22,32 @@
     <ListView
         android:id="@+id/achievementAct_LV"
         android:layout_width="409dp"
-        android:layout_height="672dp"
-        android:layout_marginTop="1dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/achievementAct_TB">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/achievementAct_TV_totalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="33dp"
+        android:text="Total Courses"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/achievementAct_TB" />
+
+    <TextView
+        android:id="@+id/achievementAct_TV_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="31dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/achievementAct_TV_totalTitle"
         app:layout_constraintTop_toBottomOf="@+id/achievementAct_TB" />
 
 
