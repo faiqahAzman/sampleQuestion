@@ -16,10 +16,13 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ClassActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private ArrayList<Course> list;
+    private ArrayList<String> enrolledList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class ClassActivity extends AppCompatActivity implements RecyclerViewInte
         MyAdapter adapter = new MyAdapter(list,this);
         recyclerView.setAdapter(adapter);
 
+        enrolledList = new ArrayList<>();
+
 
 
     }
@@ -66,12 +71,21 @@ public class ClassActivity extends AppCompatActivity implements RecyclerViewInte
 
                         SharedPreferences sharedPreferences = getSharedPreferences("courseEnrolled", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("day", list.get(position).getDay());
-                        editor.putString("time", list.get(position).getTime());
-                        editor.putString("course", list.get(position).getCourse());
+                        enrolledList.add(new Course(list.get(position).getDay(),list.get(position).getTime(),list.get(position).getCourse(),"").toString());
+//                        editor.putString("day", list.get(position).getDay());
+//                        editor.putString("time", list.get(position).getTime());
+//                        editor.putString("course", list.get(position).getCourse());
+//                        editor.commit();
+
+                        //Put list of data in set for shared preferences
+                        Set<String> set = new HashSet<String>();
+                        set.addAll(enrolledList);
+                        editor.putStringSet("courseKey", set);
                         editor.commit();
 
                         Toast.makeText(getApplicationContext(), "Enrolled", Toast.LENGTH_SHORT).show();
+
+
 
 
 
@@ -95,4 +109,8 @@ public class ClassActivity extends AppCompatActivity implements RecyclerViewInte
         alert11.show();
 
     }
+
+
+
+
 }

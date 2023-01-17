@@ -13,8 +13,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class AchievementActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +40,21 @@ public class AchievementActivity extends AppCompatActivity {
         ListView history = findViewById(R.id.achievementAct_LV);
 
         SharedPreferences sharedPreferences = getSharedPreferences("courseEnrolled", Context.MODE_PRIVATE);
-        String course1 = sharedPreferences.getString("course", "");
 
-        String[] courseName = {course1};
-        String[] grades = {"A"};
-
+        //get list of data from shared preferences
+        Set<String> set = sharedPreferences.getStringSet("courseKey", null);
 
 
-        MyListAdapter adapter=new MyListAdapter(this, courseName, grades);
+
+
+        String[] courseName = new String[set.size()];
+//        set.toArray(courseName);
+
+        String[] grades = {"A","B"};
+
+
+
+        MyListAdapter adapter=new MyListAdapter(this, set.toArray(courseName), grades);
         history.setAdapter(adapter);
 
 
