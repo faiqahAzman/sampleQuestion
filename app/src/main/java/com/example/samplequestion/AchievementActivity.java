@@ -48,7 +48,7 @@ public class AchievementActivity extends AppCompatActivity {
 
 
         String[] courseName = new String[set.size()];
-//        set.toArray(courseName);
+
 
         String[] grades = {"A","B"};
 
